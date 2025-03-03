@@ -1,0 +1,15 @@
+.ColorPicker {
+  display: flex;
+  gap: 10px;
+}
+
+.ColorPicker__title {
+  color: aqua;
+}
+
+.ColorPicker__options {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+}
