@@ -1,26 +1,61 @@
+import React from 'react';
+
 import './ColorPicker.css';
 
-const ColorPicker = ({ options }) => {
-  return (
-    <>
-      <h2 className="ColorPicker__title">Color Picker</h2>
+class ColorPicker extends React.Component {
+  state = {
+    activeOptionsIndex: 0,
+  };
 
-      <ul className="ColorPicker">
-        {options.map(({ label, color }) => (
-          <li key={label}>
-            <span
-              className="ColorPicker__options"
-              style={{
-                backgroundColor: color,
-              }}
-            >
-              {/* {color} */}
-            </span>
-          </li>
-        ))}
-      </ul>
-    </>
-  );
-};
+  setActivebtnIndex = (index) => {
+    this.setState({ activeOptionsIndex: index });
+  };
+
+  makeOptionsClassName = (index) => {
+    const optionClasses = ['ColorPicker__options'];
+
+    if (index === this.state.activeOptionsIndex) {
+      optionClasses.push('ColorPicker__options--active ');
+    }
+
+    return optionClasses.join(' ');
+  };
+
+  render() {
+    const activeOptionsLabel =
+      this.props.options[this.state.activeOptionsIndex];
+
+    return (
+      <>
+        <h2 className="ColorPicker__title">Color Picker</h2>
+        <p>Выбран цвет: {activeOptionsLabel.label}</p>
+
+        <ul className="ColorPicker">
+          {this.props.options.map(({ label, color }, index) => {
+            // const optionClasses = ['ColorPicker__options'];
+
+            // if (index === this.state.activeOptionsIndex) {
+            //   optionClasses.push('ColorPicker__options--active ');
+            // }
+
+            return (
+              <li key={label}>
+                <button
+                  className={this.makeOptionsClassName(index)}
+                  style={{
+                    backgroundColor: color,
+                  }}
+                  onClick={() => {
+                    this.setActivebtnIndex(index);
+                  }}
+                ></button>
+              </li>
+            );
+          })}
+        </ul>
+      </>
+    );
+  }
+}
 
 export default ColorPicker;

@@ -13,3 +13,7 @@
   height: 40px;
   border: 1px solid black;
 }
+
+.ColorPicker__options--active {
+  transform: scale(1.3);
+}
