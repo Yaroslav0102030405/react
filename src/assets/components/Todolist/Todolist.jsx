@@ -1,8 +1,8 @@
-const Todolist = ({ todos, onDeleteTodo }) => {
+const Todolist = ({ todos, onDeleteTodo, onToggleCompleted }) => {
   return (
     <>
       <ul>
-        {todos.map(({ id, text }) => (
+        {todos.map(({ id, text, completed }) => (
           <li
             style={{
               display: 'flex',
@@ -14,6 +14,11 @@ const Todolist = ({ todos, onDeleteTodo }) => {
             }}
             key={id}
           >
+            <input
+              type="checkbox"
+              checked={completed}
+              onChange={() => onToggleCompleted(id)}
+            />
             <p>{text}</p>
             <button
               onClick={() => onDeleteTodo(id)}
