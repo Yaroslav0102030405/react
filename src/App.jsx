@@ -1,6 +1,8 @@
 import React from 'react';
-import shortid from 'shortid';
+// import axios from 'axios';
+// import shortid from 'shortid';
 import Icon from './assets/components/Icon/Icon';
+import todosApi from './assets/fetchTodos/FetchTodos';
 
 // import { useState } from 'react';
 import reactLogo from './assets/react.svg?react';
@@ -26,6 +28,9 @@ import Layout from './assets/components/layout/Layout';
 
 import Modal from './assets/components/Modal/Modal';
 import IconButton from './assets/components/IconButton/IconButton';
+
+import ArticlesView from './assets/components/ArticlesView/ArticlesView';
+
 const title = 'Першій досвід';
 
 const colorPickerOptions = [
@@ -52,35 +57,60 @@ class App extends React.Component {
     this.setState(({ showModal }) => ({ showModal: !showModal }));
   };
 
-  deleteTodo = (todoId) => {
-    this.setState((prevState) => ({
-      todos: prevState.todos.filter((todo) => todo.id !== todoId),
-    }));
-  };
+  componentDidMount() {
+    todosApi
+      .fetchTodos()
+      .then((todos) => this.setState({ todos }))
+      .catch((error) => console.log(error));
+  }
+
+  componentDidUpdate() {
+    console.log('componentDidUpdate');
+
+    // if (this.state.todos !== prevState.todos) {
+    //   localStorage.setItem('todos', JSON.stringify(this.state.todos));
+    // }
+  }
 
   addTodo = (text) => {
-    console.log(text);
+    const todoData = { text, completed: false };
 
-    const todo = { id: shortid.generate(), text, completed: false };
+    todosApi
+      .addTodo(todoData)
+      .then((todo) => {
+        this.setState(({ todos }) => ({ todos: [...todos, todo] }));
+      })
+      .catch((error) => console.log(error));
+  };
 
-    this.setState((prevState) => ({
-      todos: [todo, ...prevState.todos],
-    }));
+  deleteTodo = (todoId) => {
+    todosApi
+      .deleteTodo(todoId)
+      .then(() => {
+        this.setState(({ todos }) => ({
+          todos: todos.filter(({ id }) => id !== todoId),
+        }));
+      })
+      .catch((error) => error);
   };
 
   toggleCompleted = (todoId) => {
-    this.setState((prevState) => ({
-      todos: prevState.todos.map((todo) => {
-        if (todo.id === todoId) {
-          return {
-            ...todo,
-            completed: !todo.completed,
-          };
-        }
+    const todo = this.state.todos.find(({ id }) => id === todoId);
+    const { completed } = todo;
+    const update = {
+      completed: !completed,
+    };
 
-        return todo;
-      }),
-    }));
+    todosApi
+      .updateTodo(todoId, update)
+      .then((updateTodo) => {
+        this.setState(({ todos }) => ({
+          todos: todos.map((todo) =>
+            todo.id === updateTodo.id ? updateTodo : todo
+          ),
+        }));
+      })
+      .catch((error) => console.log(error));
   };
 
   formSubmitData = (data) => {
@@ -107,25 +137,6 @@ class App extends React.Component {
       0
     );
   };
-
-  componentDidMount() {
-    console.log(' componentDidMount');
-
-    const todos = localStorage.getItem('todos');
-    const parseTodos = JSON.parse(todos);
-
-    if (parseTodos) {
-      this.setState({ todos: parseTodos });
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log('componentDidUpdate');
-
-    if (this.state.todos !== prevState.todos) {
-      localStorage.setItem('todos', JSON.stringify(this.state.todos));
-    }
-  }
 
   render() {
     const { todos, filter, showModal } = this.state;
@@ -214,6 +225,7 @@ class App extends React.Component {
             onToggleCompleted={this.toggleCompleted}
           />
           <Form onSubmit={this.formSubmitData} />
+          <ArticlesView />
         </Layout>
       </>
     );
