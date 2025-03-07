@@ -1,6 +1,6 @@
 import React from 'react';
-// import axios from 'axios';
-// import shortid from 'shortid';
+// import { NavLink } from 'react-router';
+
 import Icon from './assets/components/Icon/Icon';
 import todosApi from './assets/fetchTodos/FetchTodos';
 
@@ -66,10 +66,6 @@ class App extends React.Component {
 
   componentDidUpdate() {
     console.log('componentDidUpdate');
-
-    // if (this.state.todos !== prevState.todos) {
-    //   localStorage.setItem('todos', JSON.stringify(this.state.todos));
-    // }
   }
 
   addTodo = (text) => {
@@ -147,13 +143,20 @@ class App extends React.Component {
 
     return (
       <>
+        {/* <ul>
+          <li>
+            <NavLink to="/">App</NavLink>
+          </li>
+          <li>
+            <NavLink to="/home">Home</NavLink>
+          </li>
+          <li>
+            <NavLink></NavLink>
+          </li>
+        </ul> */}
         <Layout>
-          {/* <IconBtn /> */}
           <IconButton>
             <Icon color={'black'} />
-            {/* <svg className="Icon" width="100" height="100" fill="#40E0D0">
-              <use href={IconBtn}></use>
-            </svg> */}
           </IconButton>
           <button type="button" onClick={this.toggleModal}>
             Открыть модалку

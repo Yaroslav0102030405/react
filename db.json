@@ -3,7 +3,25 @@
     {
       "id": "1",
       "text": "Вивчити основи React",
-      "completed": true
+      "completed": true,
+      "authorId": "1"
+    },
+    {
+      "id": "2",
+      "text": "Разобратися з React Router",
+      "completed": false,
+      "authorId": "2"
+    },
+    {
+      "id": "3",
+      "text": "Пережити Redux",
+      "completed": false,
+      "authorId": "3"
     }
+  ],
+  "authors": [
+    { "id": 1, "name": "Перший автор" },
+    { "id": 2, "name": "Другий автор" },
+    { "id": 3, "name": "Третій автор" }
   ]
 }
