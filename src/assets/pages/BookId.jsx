@@ -1,26 +1,33 @@
 import React from 'react';
 import Axios from 'axios';
+// import { Link } from 'react-router';
 
-const BookId = () => {
+class BookId extends React.Component {
+  state = { books: [] };
+
   // async componentDidMount() {
-  //   const response = await Axios.get(`http://localhost:3000/books/${id}`);
+  //   const response = await Axios.get(`http://localhost:3000/todos`);
   //   console.log(response.data);
   //   this.setState({ books: response.data });
   // }
+  render() {
+    // console.log(this.props.url);
+    return (
+      <>
+        <h1>Сторінка однієї книги</h1>
 
-  return (
-    <>
-      <h1>Сторінка однієї книги</h1>
+        {/* <p>{this.state.books.bookId}</p> */}
 
-      {/* <ul>
+        {/* <ul>
           {this.state.books.map(({ id, name }) => (
             <li key={id}>
-              <h1>{name}</h1>
+              <Link to={`/books/${id}`}>{name}</Link>
             </li>
           ))}
         </ul> */}
-    </>
-  );
-};
+      </>
+    );
+  }
+}
 
 export default BookId;

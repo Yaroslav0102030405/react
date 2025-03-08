@@ -1,19 +1,9 @@
 import React from 'react';
-// import { NavLink } from 'react-router';
-
 import Icon from './assets/components/Icon/Icon';
 import todosApi from './assets/fetchTodos/FetchTodos';
-
-// import { useState } from 'react';
 import reactLogo from './assets/react.svg?react';
 import viteLogo from '/vite.svg';
 import './App.css';
-
-// import { AiFillApple } from 'react-icons/ai';
-// import IconBtn from '/icon.svg';
-
-// import initialTodos from './todos.json';
-
 import Painting from './assets/components/Painting/Painting';
 import Details from './assets/Details';
 import Panel from './assets/Panel';
@@ -25,11 +15,18 @@ import Form from './assets/components/Form/Form';
 import TodoEditor from './assets/components/TodoEditor/TodoEditor';
 import Filter from './assets/components/Filter/Filter';
 import Layout from './assets/components/layout/Layout';
-
 import Modal from './assets/components/Modal/Modal';
 import IconButton from './assets/components/IconButton/IconButton';
-
 import ArticlesView from './assets/components/ArticlesView/ArticlesView';
+
+import { Routes, Route } from 'react-router';
+import Home from './assets/pages/Home.jsx';
+import About from './assets/pages/About.jsx';
+import Books from './assets/pages/Books.jsx';
+import Author from './assets/pages/Author.jsx';
+import BookId from './assets/pages/BookId.jsx';
+import routes from './assets/routes.js';
+import AuthContext from './assets/context/Auth.jsx';
 
 const title = 'Першій досвід';
 
@@ -143,93 +140,95 @@ class App extends React.Component {
 
     return (
       <>
-        {/* <ul>
-          <li>
-            <NavLink to="/">App</NavLink>
-          </li>
-          <li>
-            <NavLink to="/home">Home</NavLink>
-          </li>
-          <li>
-            <NavLink></NavLink>
-          </li>
-        </ul> */}
-        <Layout>
-          <IconButton>
-            <Icon color={'black'} />
-          </IconButton>
-          <button type="button" onClick={this.toggleModal}>
-            Открыть модалку
-          </button>
-          {showModal && (
-            <Modal onClose={this.toggleModal}>
-              <h1>Привет</h1>
-              <p>Hello</p>
-              <button type="button" onClick={this.toggleModal}>
-                Закрыть
-              </button>
-            </Modal>
-          )}
-          <div style={styles.container}>
-            <ColorPicker options={colorPickerOptions} />
-            <Panel title="Хорошие новости">
-              <p>Привет</p>
-            </Panel>
-            <Panel>
-              <p>Пока</p>
-              <p>fdfdfdfdfdfdfdf</p>
-            </Panel>
-            <ul>
-              {number.map((num) => (
-                <li key={num}>
-                  <h2>{num}</h2>
-                </li>
-              ))}
-            </ul>
+        <AuthContext>
+          <Layout>
+            <Routes>
+              <Route path={routes.home} element={<Home />} />
+              <Route path={routes.about} element={<About />} />
+              <Route path={routes.booksId} element={<BookId />} />
+              <Route path={routes.books} element={<Books />} />
+              <Route path={routes.authors} element={<Author />} />
+            </Routes>
+            <IconButton>
+              <Icon color={'black'} />
+            </IconButton>
+            <button type="button" onClick={this.toggleModal}>
+              Открыть модалку
+            </button>
+            {showModal && (
+              <Modal onClose={this.toggleModal}>
+                <h1>Привет</h1>
+                <p>Hello</p>
+                <button type="button" onClick={this.toggleModal}>
+                  Закрыть
+                </button>
+              </Modal>
+            )}
+            <div style={styles.container}>
+              <ColorPicker options={colorPickerOptions} />
+              <Panel title="Хорошие новости">
+                <p>Привет</p>
+              </Panel>
+              <Panel>
+                <p>Пока</p>
+                <p>fdfdfdfdfdfdfdf</p>
+              </Panel>
+              <ul>
+                {number.map((num) => (
+                  <li key={num}>
+                    <h2>{num}</h2>
+                  </li>
+                ))}
+              </ul>
 
-            <div>
-              <a href="https://vite.dev" target="_blank">
-                <img src={viteLogo} className="logo" alt="Vite logo" />
-              </a>
-              <a href="https://react.dev" target="_blank">
-                <img src={reactLogo} className="logo react" alt="React logo" />
-              </a>
-            </div>
-            <h1>Vite + React</h1>
-            <div className="card">
-              {/* <button onClick={() => setCount((count) => count + 1)}>
+              <div>
+                <a href="https://vite.dev" target="_blank">
+                  <img src={viteLogo} className="logo" alt="Vite logo" />
+                </a>
+                <a href="https://react.dev" target="_blank">
+                  <img
+                    src={reactLogo}
+                    className="logo react"
+                    alt="React logo"
+                  />
+                </a>
+              </div>
+              <h1>Vite + React</h1>
+              <div className="card">
+                {/* <button onClick={() => setCount((count) => count + 1)}>
                 count is {count}
               </button> */}
-              <p>
-                Edit <code>src/App.jsx</code> and save to test HMR
+                <p>
+                  Edit <code>src/App.jsx</code> and save to test HMR
+                </p>
+              </div>
+              <p className="read-the-docs">
+                Click on the Vite and React logos to learn more
               </p>
+
+              <Painting />
+              <Details title={title} />
             </div>
-            <p className="read-the-docs">
-              Click on the Vite and React logos to learn more
-            </p>
+            <Counter initialValue={10} />
+            <Dropdown />
+            <div>
+              <p>Общее количество туду: {totalTodoCount} </p>
+              <p>Количество выполенных:{completedTodoCount}</p>
+            </div>
+            <TodoEditor onSubmitText={this.addTodo} />
 
-            <Painting />
-            <Details title={title} />
-          </div>
-          <Counter initialValue={10} />
-          <Dropdown />
-          <div>
-            <p>Общее количество туду: {totalTodoCount} </p>
-            <p>Количество выполенных:{completedTodoCount}</p>
-          </div>
-          <TodoEditor onSubmitText={this.addTodo} />
+            <Filter value={filter} onChange={this.changeFilter} />
 
-          <Filter value={filter} onChange={this.changeFilter} />
-
-          <Todolist
-            // todos={todos}
-            todos={visibleTodos}
-            onDeleteTodo={this.deleteTodo}
-            onToggleCompleted={this.toggleCompleted}
-          />
-          <Form onSubmit={this.formSubmitData} />
-          <ArticlesView />
-        </Layout>
+            <Todolist
+              // todos={todos}
+              todos={visibleTodos}
+              onDeleteTodo={this.deleteTodo}
+              onToggleCompleted={this.toggleCompleted}
+            />
+            <Form onSubmit={this.formSubmitData} />
+            <ArticlesView />
+          </Layout>
+        </AuthContext>
       </>
     );
   }

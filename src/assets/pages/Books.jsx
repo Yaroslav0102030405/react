@@ -13,7 +13,7 @@ class BookId extends React.Component {
   render() {
     return (
       <>
-        <h1>Сторінка однієї книги</h1>
+        <h1>Сторінка всіх книг</h1>
         <ul>
           {this.state.books.map(({ id, text }) => (
             <li key={id}>

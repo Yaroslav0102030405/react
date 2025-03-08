@@ -4,19 +4,19 @@
       "id": "1",
       "text": "Вивчити основи React",
       "completed": true,
-      "authorId": "1"
+      "bookId": "1"
     },
     {
       "id": "2",
       "text": "Разобратися з React Router",
       "completed": false,
-      "authorId": "2"
+      "bookId": "2"
     },
     {
       "id": "3",
       "text": "Пережити Redux",
       "completed": false,
-      "authorId": "3"
+      "bookId": "3"
     }
   ],
   "authors": [

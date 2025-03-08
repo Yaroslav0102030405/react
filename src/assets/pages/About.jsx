@@ -1,8 +1,16 @@
+import AuthContext from '../context/Auth';
+
 const About = () => {
   return (
-    <>
-      <h1>Сторінка про компанію</h1>
-    </>
+    <AuthContext.Consumer>
+      {({ name }) => (
+        <form>
+          <label>
+            <input type="text" value={name} />
+          </label>
+        </form>
+      )}
+    </AuthContext.Consumer>
   );
 };
 
