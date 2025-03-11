@@ -195,9 +195,6 @@ class App extends React.Component {
               </div>
               <h1>Vite + React</h1>
               <div className="card">
-                {/* <button onClick={() => setCount((count) => count + 1)}>
-                count is {count}
-              </button> */}
                 <p>
                   Edit <code>src/App.jsx</code> and save to test HMR
                 </p>
@@ -215,6 +212,7 @@ class App extends React.Component {
               <p>Общее количество туду: {totalTodoCount} </p>
               <p>Количество выполенных:{completedTodoCount}</p>
             </div>
+            {/* <TodoEditor /> */}
             <TodoEditor onSubmitText={this.addTodo} />
 
             <Filter value={filter} onChange={this.changeFilter} />

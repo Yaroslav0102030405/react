@@ -1,4 +1,6 @@
 import React from 'react';
+// import { connect } from 'react-redux';
+// import todosActions from '../../redux/todos/todos-actions';
 
 class TodoEditor extends React.Component {
   state = {
@@ -35,5 +37,9 @@ class TodoEditor extends React.Component {
     );
   }
 }
+
+// const mapDispatchProps = (dispatch) => ({
+//   onSubmit: (text) => dispatch(todosActions.addTodo(text)),
+// });
 
 export default TodoEditor;
