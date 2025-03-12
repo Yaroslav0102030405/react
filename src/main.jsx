@@ -5,6 +5,7 @@ import './index.css';
 import App from './App.jsx';
 import { Provider } from 'react-redux';
 import store from './assets/redux/store.jsx';
+import { PersistGate } from 'redux-persist/integration/react';
 import 'modern-normalize/modern-normalize.css';
 
 // console.log(store);
@@ -12,10 +13,12 @@ import 'modern-normalize/modern-normalize.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
+    <Provider store={store.store}>
+      <PersistGate loading={null} persistor={store.persistor}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </PersistGate>
+    </Provider>
   </StrictMode>
 );
