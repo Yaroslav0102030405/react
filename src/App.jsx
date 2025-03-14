@@ -27,6 +27,8 @@ import Author from './assets/pages/Author.jsx';
 import BookId from './assets/pages/BookId.jsx';
 import routes from './assets/routes.js';
 import AuthContext from './assets/context/Auth.jsx';
+import AppBar from './assets/components/AppBar/AppBar.jsx';
+// import RegisterPage from './assets/pages/RegisterPage.jsx';
 
 const title = 'Першій досвід';
 
@@ -140,6 +142,8 @@ class App extends React.Component {
 
     return (
       <>
+        {/* <RegisterPage /> */}
+        <AppBar />
         <AuthContext>
           <Layout>
             <Routes>
