@@ -29,6 +29,10 @@ import routes from './assets/routes.js';
 import AuthContext from './assets/context/Auth.jsx';
 import AppBar from './assets/components/AppBar/AppBar.jsx';
 // import RegisterPage from './assets/pages/RegisterPage.jsx';
+import UseCounter from './assets/components/useHooks/UseCounter.jsx';
+import UseForm from './assets/components/useHooks/UseForm.jsx';
+import Clock from './assets/components/useHooks/Clock.jsx';
+import UseNews from './assets/components/useHooks/useNews.jsx';
 
 const title = 'Першій досвід';
 
@@ -144,6 +148,10 @@ class App extends React.Component {
       <>
         {/* <RegisterPage /> */}
         <AppBar />
+        <UseCounter />
+        <UseForm />
+        <UseNews />
+        <Clock />
         <AuthContext>
           <Layout>
             <Routes>
