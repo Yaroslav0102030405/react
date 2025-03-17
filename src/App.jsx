@@ -33,6 +33,7 @@ import UseCounter from './assets/components/useHooks/UseCounter.jsx';
 import UseForm from './assets/components/useHooks/UseForm.jsx';
 import Clock from './assets/components/useHooks/Clock.jsx';
 import UseNews from './assets/components/useHooks/useNews.jsx';
+import Test from './assets/components/Test/Test.jsx';
 
 const title = 'Першій досвід';
 
@@ -148,10 +149,11 @@ class App extends React.Component {
       <>
         {/* <RegisterPage /> */}
         <AppBar />
+        <Test />
+        <Clock />
         <UseCounter />
         <UseForm />
         <UseNews />
-        <Clock />
         <AuthContext>
           <Layout>
             <Routes>
