@@ -34,6 +34,7 @@ import UseForm from './assets/components/useHooks/UseForm.jsx';
 import Clock from './assets/components/useHooks/Clock.jsx';
 import UseNews from './assets/components/useHooks/useNews.jsx';
 import Test from './assets/components/Test/Test.jsx';
+import Testx from './assets/pages/Testx.jsx';
 
 const title = 'Першій досвід';
 
@@ -157,6 +158,9 @@ class App extends React.Component {
         <AuthContext>
           <Layout>
             <Routes>
+              <Route path="/test/:testId" element={<Testx />} />
+              {/* <Test10 />
+              </Route> */}
               <Route path={routes.home} element={<Home />} />
               <Route path={routes.about} element={<About />} />
               <Route path={routes.booksId} element={<BookId />} />

@@ -37,7 +37,7 @@ const ArticlesView = () => {
         .catch((error) => setError(error.message))
         .finally(() => setIsLoading(false));
     };
-    fetchArticles();
+    // fetchArticles();
 
     // return () => {
     //   return !fetchArticles();
