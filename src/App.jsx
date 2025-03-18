@@ -35,6 +35,7 @@ import Clock from './assets/components/useHooks/Clock.jsx';
 import UseNews from './assets/components/useHooks/useNews.jsx';
 import Test from './assets/components/Test/Test.jsx';
 import Testx from './assets/pages/Testx.jsx';
+import { Product } from './assets/components/Product/Product.jsx';
 
 const title = 'Першій досвід';
 
@@ -150,6 +151,7 @@ class App extends React.Component {
       <>
         {/* <RegisterPage /> */}
         <AppBar />
+        <Product />
         <Test />
         <Clock />
         <UseCounter />
