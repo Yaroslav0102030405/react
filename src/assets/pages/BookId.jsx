@@ -38,7 +38,7 @@ const BookId = () => {
     <>
       <h1>Сторінка однієї книги{id}</h1>
 
-      <p>{author.name}</p>
+      <p>{author.text}</p>
 
       <AuthorItem author={author} />
       {/* <p>{text}</p> */}
