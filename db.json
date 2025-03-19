@@ -3,7 +3,7 @@
     {
       "id": "1",
       "text": "Вивчити основи React",
-      "completed": true,
+      "completed": false,
       "bookId": "1"
     },
     {

@@ -36,6 +36,7 @@ import UseNews from './assets/components/useHooks/useNews.jsx';
 import Test from './assets/components/Test/Test.jsx';
 import Testx from './assets/pages/Testx.jsx';
 import { Product } from './assets/components/Product/Product.jsx';
+import Ap from './assets/components/Product/Ap.jsx';
 
 const title = 'Першій досвід';
 
@@ -149,6 +150,7 @@ class App extends React.Component {
 
     return (
       <>
+        <Ap />
         {/* <RegisterPage /> */}
         <AppBar />
         <Product />

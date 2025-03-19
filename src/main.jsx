@@ -8,6 +8,7 @@ import store from './assets/redux/store.jsx';
 import { PersistGate } from 'redux-persist/integration/react';
 import 'modern-normalize/modern-normalize.css';
 // import authContext from './assets/context/authContext.jsx';
+// import { AuthProvider } from '@reduxjs/toolkit/query/react';
 
 // console.log(store);
 // console.log(store.getState());
@@ -17,9 +18,11 @@ createRoot(document.getElementById('root')).render(
     <Provider store={store.store}>
       <PersistGate loading={null} persistor={store.persistor}>
         {/* <authContext.Provider value={{ a: 1 }}> */}
+
         <BrowserRouter>
           <App />
         </BrowserRouter>
+
         {/* </authContext.Provider> */}
       </PersistGate>
     </Provider>
