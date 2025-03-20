@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useParams, Link } from 'react-router';
 import Axios from 'axios';
 // import { Link } from 'react-router';
 import { ApiService } from '../services/ApiService';
@@ -36,6 +36,7 @@ const BookId = () => {
 
   return (
     <>
+      <Link to="/">Назад на главную</Link>
       <h1>Сторінка однієї книги{id}</h1>
 
       <p>{author.text}</p>
